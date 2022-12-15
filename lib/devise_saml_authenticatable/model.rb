@@ -62,6 +62,7 @@ module Devise
             if create_user
               logger.info("Creating user(#{auth_value}).")
               resource = new
+              logger.info "*** #{resource.inspect}"
             else
               logger.info("User(#{auth_value}) not found.  Not configured to create the user.")
               return nil

@@ -121,9 +121,14 @@ module Devise
       user.send "#{Devise.saml_default_user_key}=", auth_value
     end
 
-    user.save!
-    puts "*** user save errors: #{user.errors.full_messages}"
+    user.valid?
     puts "*** user object: #{user.inspect}"
+    puts "*** user save errors: #{user.errors.full_messages}"
+
+    user.save!
+    puts "*** user object: #{user.inspect}"
+    puts "*** user save errors: #{user.errors.full_messages}"
+
     user
   end
 
