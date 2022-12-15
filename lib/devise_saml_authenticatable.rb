@@ -121,12 +121,9 @@ module Devise
       user.send "#{Devise.saml_default_user_key}=", auth_value
     end
 
-    if user.valid?
-      user.save!
-    else
-      Rails.logger.debug "*** user failed to save: #{user.errors.full_messages}"
-      raise "UserSaveError"
-    end
+    user.save!
+    Rails.logger.debug "*** user save errors: #{user.errors.full_messages}"
+    user
   end
 
   # Proc that is called if Devise.saml_update_user and/or Devise.saml_create_user are true.
