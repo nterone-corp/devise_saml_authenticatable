@@ -3,7 +3,7 @@ require 'ruby-saml'
 class Devise::SamlSessionsController < Devise::SessionsController
   include DeviseSamlAuthenticatable::SamlConfig
 
-  skip_before_action :verify_authenticity_token, raise: false
+  skip_before_action :verify_authenticity_token
   prepend_before_action :verify_signed_out_user, :store_info_for_sp_initiated_logout, only: :destroy
 
   def new
