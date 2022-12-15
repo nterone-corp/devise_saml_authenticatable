@@ -122,15 +122,19 @@ module Devise
       user.send "#{Devise.saml_default_user_key}=", auth_value
     end
 
-    user.valid?
-    puts "*** user object: #{user.inspect}"
-    puts "*** user save errors: #{user.errors.full_messages}"
+    # Via https://snippets.aktagon.com/snippets/456-a-random-password-generator-for-ruby
+    CHARS = ('0'..'9').to_a + ('A'..'Z').to_a + ('a'..'z').to_a
+    CHARS.sort_by { rand }.join[15] + "Aa1" # Ensure pwd rules compliance
+
+    user.password = pwd
+    user.password_confirmation = pwd
+
+    unless user.valid?
+      puts user.errors.full_messages
+      raise "InvalidUserError"
+    end
 
     user.save!
-    puts "*** user object: #{user.inspect}"
-    puts "*** user save errors: #{user.errors.full_messages}"
-
-    user
   end
 
   # Proc that is called if Devise.saml_update_user and/or Devise.saml_create_user are true.
