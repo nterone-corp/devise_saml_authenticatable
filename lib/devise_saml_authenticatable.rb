@@ -122,7 +122,8 @@ module Devise
     end
 
     user.save!
-    Rails.logger.debug "*** user save errors: #{user.errors.full_messages}"
+    puts "*** user save errors: #{user.errors.full_messages}"
+    puts "*** user object: #{user.inspect}"
     user
   end
 
