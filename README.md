@@ -3,7 +3,7 @@
 This repo is used in company-website. It forward ports an old bugfix that was
 removed when it dropped rails 4 support. We need the modern features, but company-website is rails 4.
 
-Do not delete this repo. Do not delete branch 1_9_0_pin.
+Do not delete this repo. Do not delete branch 1_9_7_pin.
 
 daniel@nterone.com 15 Dec 2022.
 
