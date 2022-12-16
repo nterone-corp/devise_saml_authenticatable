@@ -124,7 +124,7 @@ module Devise
 
     # Via https://snippets.aktagon.com/snippets/456-a-random-password-generator-for-ruby
     CHARS = ('0'..'9').to_a + ('A'..'Z').to_a + ('a'..'z').to_a
-    CHARS.sort_by { rand }.join[15] + "Aa1" # Ensure pwd rules compliance
+    pwd = CHARS.sort_by { rand }.join[15] + "Aa1" # Ensure pwd rules compliance
 
     user.password = pwd
     user.password_confirmation = pwd
